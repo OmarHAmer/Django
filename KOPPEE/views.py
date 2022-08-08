@@ -4,11 +4,11 @@ from .models import Job
 
 def job_list(request):
     job_list = Job.objects.all()
-
+    print (job_list)
     context = {
         'jobs' : job_list
     }
-    render(request,'job/job_list.html',context)
+    return render(request,'job/job_list.html',context)
 
 def job_detail(request, id):
     pass
