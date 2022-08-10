@@ -1,3 +1,4 @@
+from email.mime import image
 from operator import mod
 from pyexpat import model
 from turtle import title
@@ -6,6 +7,9 @@ from django.db import models
 
 # Create your models here.
 
+def upload_image(instance,image):
+    imagename , imageexc = image.split('.')
+    return 'Image/{}.{}'.format(instance.id,imageexc)
 
 class Job(models.Model):
     JOB_TYPE = (('F','Full Time'),('P','Part Time'),)
@@ -17,6 +21,7 @@ class Job(models.Model):
     salary = models.IntegerField()
     experience = models.IntegerField(default=0)
     category = models.ForeignKey('Category',on_delete=models.CASCADE)
+    image = models.ImageField(upload_to=upload_image)
 
     def __str__(self) -> str:
         return self.title
