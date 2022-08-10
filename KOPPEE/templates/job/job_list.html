@@ -96,16 +96,17 @@
                 <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">About Us</h4>
                 <h1 class="display-4">Serving Since 1950</h1>
             </div>
+            {% for job in jobs %}
             <div class="row">
                 <div class="col-lg-4 py-0 py-lg-5">
-                    <h1 class="mb-3">Our Story</h1>
-                    <h5 class="mb-3">Eos kasd eos dolor vero vero, lorem stet diam rebum. Ipsum amet sed vero dolor sea</h5>
-                    <p>Takimata sed vero vero no sit sed, justo clita duo no duo amet et, nonumy kasd sed dolor eos diam lorem eirmod. Amet sit amet amet no. Est nonumy sed labore eirmod sit magna. Erat at est justo sit ut. Labor diam sed ipsum et eirmod</p>
-                    <a href="" class="btn btn-secondary font-weight-bold py-2 px-4 mt-2">Learn More</a>
+                    <h1 class="mb-3">{{job}}</h1>
+                    <h5 class="mb-3">{{job.get_job_type_display}}</h5>
+                    <p>{{job.description}}</p>
+                    <a href="{% url 'KOPPEE:job_detail' job.id%} " class="btn btn-secondary font-weight-bold py-2 px-4 mt-2">Job Details</a>
                 </div>
                 <div class="col-lg-4 py-5 py-lg-0" style="min-height: 500px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100" src="{% static 'img/about.png' %}" style="object-fit: cover;">
+                        <img class="position-absolute w-100 h-100" src="{{job.image.url}}" style="object-fit: cover;">
                     </div>
                 </div>
                 <div class="col-lg-4 py-0 py-lg-5">
@@ -117,6 +118,7 @@
                     <a href="" class="btn btn-primary font-weight-bold py-2 px-4 mt-2">Learn More</a>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
     <!-- About End -->

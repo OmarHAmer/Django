@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'Django', 
         'USER': 'postgres', 
-        'PASSWORD': '1234',
+        'PASSWORD': 'admin',
         'HOST': 'localhost', 
         'PORT': '5432',
     }
@@ -125,10 +125,10 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    '/var/www/static/',
 ]
 
 MEDIA_URL = 'media/'
+MEDIA_ROOT = 'media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
