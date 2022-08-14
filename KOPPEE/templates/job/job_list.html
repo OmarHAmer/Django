@@ -96,29 +96,44 @@
                 <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">About Us</h4>
                 <h1 class="display-4">Serving Since 1950</h1>
             </div>
-            {% for job in jobs %}
+            
             <div class="row">
+                {% for job in jobs %}
                 <div class="col-lg-4 py-0 py-lg-5">
                     <h1 class="mb-3">{{job}}</h1>
                     <h5 class="mb-3">{{job.get_job_type_display}}</h5>
                     <p>{{job.description}}</p>
-                    <a href="{% url 'KOPPEE:job_detail' job.id%} " class="btn btn-secondary font-weight-bold py-2 px-4 mt-2">Job Details</a>
+                    <a href="{% url 'KOPPEE:job_detail' job.slug %} " class="btn btn-secondary font-weight-bold py-2 px-4 mt-2">Job Details</a>
                 </div>
                 <div class="col-lg-4 py-5 py-lg-0" style="min-height: 500px;">
                     <div class="position-relative h-100">
                         <img class="position-absolute w-100 h-100" src="{{job.image.url}}" style="object-fit: cover;">
                     </div>
                 </div>
-                <div class="col-lg-4 py-0 py-lg-5">
-                    <h1 class="mb-3">Our Vision</h1>
-                    <p>Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est dolor</p>
-                    <h5 class="mb-3"><i class="fa fa-check text-primary mr-3"></i>Lorem ipsum dolor sit amet</h5>
-                    <h5 class="mb-3"><i class="fa fa-check text-primary mr-3"></i>Lorem ipsum dolor sit amet</h5>
-                    <h5 class="mb-3"><i class="fa fa-check text-primary mr-3"></i>Lorem ipsum dolor sit amet</h5>
-                    <a href="" class="btn btn-primary font-weight-bold py-2 px-4 mt-2">Learn More</a>
-                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
+            <div class="row">
+                {% if jobs.has_other_pages %}
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end">
+                      {% if jobs.has_previous %}
+                      <li class="page-item">
+                        <a class="page-link" href="?page={{ jobs.previous_page_number }}" tabindex="-1">Previous</a>
+                      </li>
+                      {% endif %}
+                      {% for i in jobs.paginator.page_range %}
+                      <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                      {% endfor %}
+                      {% if jobs.has_next %}
+                      <li class="page-item">
+                        <a class="page-link" href="?page={{ jobs.next_page_number }}">Next</a>
+                      </li>
+                      {% endif %}
+                    </ul>
+                  </nav>
+                  {% endif %}
+            </div>
+            
         </div>
     </div>
     <!-- About End -->
