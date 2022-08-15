@@ -3,14 +3,10 @@
 
 {% block content %}
 
-  {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
-  {% endif %}
-
-
   <form method="post">
     {% csrf_token %}
-    {% bootstrap_form form %}
+    {% bootstrap_form userform %}
+    {% bootstrap_form profileform %}
     <input type="submit" value="Signup">
   </form>
 
