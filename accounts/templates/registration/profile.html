@@ -1,0 +1,18 @@
+{% extends 'MainPage.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+
+  {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+
+  <form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit" value="Signup">
+  </form>
+
+
+{% endblock %}
