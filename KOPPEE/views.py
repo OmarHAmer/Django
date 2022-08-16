@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Job
 from .forms import ApplyForms
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def job_list(request):
@@ -15,7 +16,8 @@ def job_list(request):
         'jobs' : page_obj
     }
     return render(request,'job/job_list.html',context)
-
+    
+@login_required
 def job_detail(request, slug):
     job_detail = Job.objects.get(slug = slug)
 

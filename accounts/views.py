@@ -1,7 +1,4 @@
-from ast import arg
 from django.urls import reverse
-from contextlib import redirect_stderr
-from urllib.robotparser import RequestRate
 from django.shortcuts import render,redirect
 from .forms import SignupForm,UserForm,ProfileForm
 from .models import Profile
