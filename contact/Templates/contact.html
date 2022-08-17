@@ -1,0 +1,30 @@
+{% extends 'MainPage.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+
+  <div class="col-lg-5 col-md-6 mb-5">
+    <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Profile Summary</h4>
+    <div class="d-flex justify-content-start">
+      <ul>
+        <li>place :<span>{{myinfo.place}}</span></li>
+        <li>Email :<span>{{myinfo.email}}</span></li>
+        <li>Phone :<span>{{myinfo.phone_number}}</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-7 col-md-6 mb-5">
+    <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Profile Summary</h4>
+    <div class="d-flex justify-content-start">
+      <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">Send</button>
+        {% endbuttons %}
+    </form>
+    </div>
+  </div>
+
+{% endblock %}
+

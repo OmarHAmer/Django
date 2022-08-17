@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     #my-app
     'KOPPEE',
     "bootstrap5",
+    'django_filters',
+    'contact',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +138,10 @@ MEDIA_ROOT = 'media'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True  
+EMAIL_HOST = 'smtp.gmail.com'  
+EMAIL_PORT = 587  
+EMAIL_HOST_USER = 'omar.hesham.amer91@gmail.com'  
+EMAIL_HOST_PASSWORD = 'kkdhoshduwkhkaln'
