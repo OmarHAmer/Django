@@ -4,6 +4,7 @@ from .forms import ApplyForms
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from .filters import JobFilter
+from django.views.generic.list import ListView
 # Create your views here.
 
 def job_list(request):
@@ -46,3 +47,8 @@ def job_detail(request, slug):
         'form' : form
     }
     return render(request,'job/job_detail.html',context)
+
+class PostListView(ListView):
+    model = Job
+    paginate_by = 1
+    template_name = 'job/infinite_scroll.html'

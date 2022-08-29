@@ -11,4 +11,8 @@ urlpatterns = [
 
     path('api/list', api.JobApi.as_view(),name = 'JobApi'),
     path('api/list/<int:id>', api.JobDetails.as_view(),name = 'JobDetails'),
+
+    path('api/listView', views.PostListView.as_view(),name = 'PostListView'),
+
+
 ]
