@@ -1,0 +1,6 @@
+KOPPEE/__pycache__/
+KOPPEE/migrations/
+accounts/migrations/
+project/__pycache__/
+accounts/__pycache__/
+project/settings.py
